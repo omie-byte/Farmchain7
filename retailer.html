@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retailer Portal - FarmChain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Distributor Portal -->
+<section id="distributor" aria-labelledby="distributor-h">
+  <h2 id="distributor-h">Distributor Portal: Verify or Update Produce</h2>
+
+  <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+    <div style="flex:1;min-width:220px">
+      <label for="filterQuality">Filter by Quality Status</label>
+      <select id="filterQuality" onchange="renderProduceList()">
+        <option value="all">All</option>
+        <option value="pending">Pending</option>
+        <option value="verified">Verified</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+    <div>
+      <button class="ghost" onclick="clearAllData()">Clear All (local)</button>
+    </div>
+  </div>
+
+  <div id="produceList" class="produce-list" aria-live="polite">
+    <!-- dynamic items will be rendered here -->
+  </div>
+</section>
+
+  <header>
+    <div class="container">
+      <h1>FarmChain - Retailer Portal</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="farmer.html">Farmer Portal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="retailer-portal" class="map-section">
+    <div class="container">
+      <h2>Find Nearby NGOs for Product Verification</h2>
+      <input id="retailerSearch" type="text" placeholder="Search NGOs near retailer location">
+      <button onclick="searchPlace('retailer')">Search</button>
+      <div id="mapRetailer"></div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script async 
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap">
+  </script>
+</body>
+</html>

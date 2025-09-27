@@ -1,0 +1,374 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: #2c3e50;
+  color: #fff;
+  padding: 15px 0;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  font-size: 24px;
+}
+header nav ul {
+  list-style: none;
+  display: flex;
+}
+header nav ul li {
+  margin: 0 10px;
+}
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  background: url('https://source.unsplash.com/1600x600/?farm,agriculture') no-repeat center center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+}
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+.hero button {
+  padding: 10px 20px;
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+/* Features */
+.features {
+  padding: 40px 20px;
+  background: #ecf0f1;
+}
+.features h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.feature-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.feature {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* NGOs Section */
+.ngo {
+  padding: 40px 20px;
+}
+.ngo h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.ngo-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.ngo-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(247, 157, 23, 0.1);
+}
+.ngo-card h3 {
+  margin-bottom: 10px;
+}
+.ngo-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #2980b9;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* About */
+.about {
+  padding: 40px 20px;
+  background: #ecf0f1;
+}
+.about h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+  background: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+
+/* Map Section */
+.map-section {
+  margin-top: 30px;
+  text-align: center;
+}
+#mapSearch {
+  padding: 10px;
+  width: 60%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.map-section button {
+  padding: 10px 15px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#map {
+  margin-top: 15px;
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+
+
+/* Map Section */
+.map-section {
+  margin-top: 40px;
+  padding: 20px;
+  background: #f4f6f7;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.map-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.map-section p {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #555;
+}
+.map-section input {
+  padding: 10px;
+  width: 60%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.map-section button {
+  padding: 10px 15px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#mapFarmer, #mapRetailer {
+  margin-top: 15px;
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+}
+
+/* ngo portol */
+.btn {
+  padding: 10px 20px;
+  background: #0b5cff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 5px;
+  display: inline-block;
+}
+
+
+
+/* farming font */
+/* --- Reset & Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #333;
+  background: #f9fafb;
+}
+h1 {
+    color: white;
+}
+/* --- Header --- */
+/* header {
+  background-color: #0b5cff;
+  color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+} */
+
+header .farming {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .farming h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ffd700; /* Gold hover effect */
+}
+
+/* --- Hero Section --- */
+.hero {
+  background: url('https://source.unsplash.com/1600x600/?farm,agriculture') no-repeat center center/cover;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4); /* dark overlay for better text visibility */
+  z-index: 0;
+}
+
+.hero .farming {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  padding: 12px 25px;
+  background-color: #27ae60;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.hero button:hover {
+  background-color: #219150;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  header .farming {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
+
+h1{
+    color: white;
+}
+
+.produce-item {
+  display: flex;
+  align-items: flex-start; /* changed from center to flex-start */
+  justify-content: space-between;
+  padding: 20px; /* increase padding */
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #eef2ff;
+  min-height: 120px; /* ensure enough height for multiple lines */
+  flex-wrap: wrap; /* allow content to wrap */
+}
+
+.produce-meta {
+  flex: 1 1 60%; /* allow it to take more space */
+  margin-right: 15px;
+}
+

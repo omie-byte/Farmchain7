@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FarmChain: Transparent Agriculture Tracking</title>
+  <link rel="stylesheet" href="abc.css">
+  <link rel="stylesheet" href="style.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+
+</head>
+<body>
+
+
+  <div class="container">
+    <header>
+      <div>
+        <nav aria-label="Main">
+          <a href="#home">Home</a>
+          <a href="#farmer">Farmer Portal</a>
+          <a href="#consumer">Consumer Portal</a>
+          <a href="#distributor">Distributor Portal</a>
+        </nav>
+      </div>
+      <div style="text-align:right;color:#334155;font-weight:600">FarmChain</div>
+    </header>
+
+    <main>
+      <section id="home">
+        <h1>FarmChain: Transparent Agriculture Tracking</h1>
+        <p class="lead">
+          Agriculture supply chains often lack transparency, leading to mistrust and inefficiencies.
+          FarmChain leverages blockchain-like traceability concepts to enable farmers to register produce,
+          distributors to verify quality, and consumers to trace origin using QR-like codes.
+        </p>
+
+        <div class="roles" aria-hidden="false">
+          <div class="card">
+            <div>
+              <h3>Farmer</h3>
+              <p class="tags">Register your produce so it can be traced and sold transparently.</p>
+            </div>
+            <div style="text-align:right">
+              <button class="role-btn" onclick="document.getElementById('farmer').scrollIntoView({behavior:'smooth'})">Open Farmer Portal</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <h3>Distributor</h3>
+              <p class="tags">Verify received produce for quality and update status.</p>
+            </div>
+            <div style="text-align:right">
+              <button class="role-btn" onclick="document.getElementById('distributor').scrollIntoView({behavior:'smooth'})">Open Distributor Portal</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <h3>Consumer</h3>
+              <p class="tags">Trace the produce origin using QR-like codes (simulated).</p>
+            </div>
+            <div style="text-align:right">
+              <button class="role-btn" onclick="document.getElementById('consumer').scrollIntoView({behavior:'smooth'})">Open Consumer Portal</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ngo portal for farmer and retailer -->
+      <section id="portal-links">
+  <div class="container">
+    <h2>Portals</h2>
+    <a href="farmer.html" class="btn">Farmer Portal</a>
+    <a href="retailer.html" class="btn">Retailer Portal</a>
+  </div>
+</section>
+      <!-- Farmer Portal -->
+      <section id="farmer" aria-labelledby="farmer-h">
+        <h2 id="farmer-h">Farmer Portal: Register Your Produce</h2>
+        <form id="farmerForm" class="grid" onsubmit="return onFarmerSubmit(event)">
+          <div>
+            <label for="cropName">Crop Name *</label>
+            <input id="cropName" name="cropName" type="text" required placeholder="e.g., Wheat, Tomato">
+          </div>
+
+          <div>
+            <label for="quantity">Quantity (kg) *</label>
+            <input id="quantity" name="quantity" type="number" min="1" required placeholder="50">
+          </div>
+
+          <div>
+            <label for="location">Location *</label>
+            <input id="location" name="location" type="text" required placeholder="Village, District">
+          </div>
+
+          <div>
+            <label for="price">Price per kg (in rupees) *</label>
+            <input id="price" name="price" type="number" min="0" required placeholder="40">
+          </div>
+
+          <div class="full">
+            <label for="farmerName">Farmer Name</label>
+            <input id="farmerName" name="farmerName" type="text" placeholder="Farmer full name">
+          </div>
+
+          <div>
+            <label for="image">Upload Image (optional)</label>
+            <input id="image" name="image" type="file" accept="image/*">
+          </div>
+
+          <div class="full" style="display:flex;gap:8px;justify-content:flex-end">
+            <button type="reset" class="ghost">Reset</button>
+            <button class="primary" type="submit">Submit</button>
+          </div>
+        </form>
+        <div id="qrCodeContainer" style="margin-top: 20px; text-align:center;"></div>
+
+        <p style="margin-top:10px;color:#334155">After submission, a QR-like code string is generated for tracing (simulated).</p>
+      </section>
+      
+
+      <!-- Consumer Portal -->
+      <section id="consumer" aria-labelledby="consumer-h">
+        <h2 id="consumer-h">Consumer Portal: Trace Your Produce</h2>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px">
+            <label for="qrSelect">Select QR Code (Simulated)</label>
+            <select id="qrSelect" onchange="onSelectQR()">
+              <option value="">-- Select QR Code --</option>
+            </select>
+          </div>
+          <div style="min-width:160px;align-self:flex-end">
+            <button class="primary" onclick="onTrace()">Trace Produce</button>
+          </div>
+        </div>
+
+        <div id="traceOut" class="trace-output" aria-live="polite" style="display:none">
+          <div class="trace-row"><strong>Farmer Name:</strong> <span id="outFarmer"></span></div>
+          <div class="trace-row"><strong>Crop:</strong> <span id="outCrop"></span></div>
+          <div class="trace-row"><strong>Origin Location:</strong> <span id="outLocation"></span></div>
+          <div class="trace-row"><strong>Quantity (kg):</strong> <span id="outQty"></span></div>
+          <div class="trace-row"><strong>Price History (Rupees/kg):</strong> <span id="outPrice"></span></div>
+          <div class="trace-row"><strong>Quality Check Status:</strong> <span id="outQuality">Pending</span></div>
+        </div>
+      </section>
+
+      <!-- Distributor Portal -->
+      <section id="distributor" aria-labelledby="distributor-h">
+        <h2 id="distributor-h">Distributor Portal</h2>
+
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+          <div style="flex:1;min-width:220px">
+            <label for="filterQuality">Filter by Quality Status</label>
+            <select id="filterQuality" onchange="renderProduceList()">
+              <option value="all">All</option>
+              <option value="pending">Pending</option>
+              <option value="verified">Verified</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+          <div>
+            <button class="ghost" onclick="clearAllData()">Clear All (local)</button>
+          </div>
+        </div>
+
+        <div id="produceList" class="produce-list" aria-live="polite">
+
+
+
+
+          <!-- dynamic items -->
+        </div>
+      </section>
+    </main>
+  </div>
+ <header>
+    <div class="farming">
+      <h1>FarmChain</h1><br>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#ngo">NGOs & Govt Orgs</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="farming">
+      <h2>Blockchain-based Transparency for Agriculture</h2>
+      <p>Ensuring fair trade, quality crops, and farmer empowerment.</p>
+      <button onclick="learnMore()">Learn More</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Blockchain Verification</h3>
+          <p>Track crops securely from farm to retailer.</p>
+        </div>
+        <div class="feature">
+          <h3>Farmer Uploads</h3>
+          <p>Farmers can upload product details directly.</p>
+        </div>
+        <div class="feature">
+          <h3>Retailer Access</h3>
+          <p>Retailers get authentic crop quality data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+            <!-- toy -->
+             <!-- NGOs and Government Orgs Section -->
+<section id="ngo" class="ngo">
+  <div class="container">
+    <h2>NGOs & Government Organizations</h2>
+    <p>We collaborate with trusted NGOs and government organizations for crop inspection and certification.</p>
+    
+    <!-- NGO Cards -->
+    <div class="ngo-grid">
+      <div class="ngo-card">
+        <h3>APEDA</h3>
+        <p>Certification and export facilitation for agricultural produce.</p>
+        <a href="https://apeda.gov.in" target="_blank">Visit Website</a>
+      </div>
+      <div class="ngo-card">
+        <h3>FAO</h3>
+        <p>Supports sustainable agricultural practices globally.</p>
+        <a href="https://www.fao.org" target="_blank">Visit Website</a>
+      </div>
+      <div class="ngo-card">
+        <h3>Local NGOs</h3>
+        <p>Assist farmers with training, quality checks, and crop inspections.</p>
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>FarmChain empowers farmers and ensures transparency using blockchain technology. Our goal is to make agriculture smarter, fairer, and more sustainable.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 FarmChain. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- <script src="script.js"></script> -->
+  <script src="script.js"></script>
+
+ <!-- Google Maps API (replace YOUR_API_KEY with real API key) -->
+<script async 
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap">
+</script>
+
+</body>
+</html>

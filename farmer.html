@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Portal - FarmChain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>FarmChain - Farmer Portal</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="retailer.html">Retailer Portal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="farmer-portal" class="map-section">
+    <div class="container">
+      <h2>Find Nearby NGOs for Crop Inspection</h2>
+      <input id="farmerSearch" type="text" placeholder="Search NGOs near farmer location">
+      <button onclick="searchPlace('farmer')">Search</button>
+      <div id="mapFarmer"></div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script async 
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap">
+  </script>
+</body>
+</html>
